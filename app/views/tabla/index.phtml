@@ -1,0 +1,81 @@
+<style type="text/css" media="screen">
+    .mdl-button {
+        margin-top: 1px;
+        margin-bottom: 1px;
+        margin-right: 1px;
+    }
+</style>
+
+<script type="text/javascript" class="init">
+	/* Funcion encargada de cargar el DataTable*/
+	$(document).ready(function() {
+		$('#tabla').DataTable( {
+							autoWidth: false,
+							columnDefs: [{
+       							targets: ['_all'],
+       							className: 'mdc-data-table__cell'
+   								}]
+		} );
+	} );
+</script>
+
+<div class="row">
+	<div class="col s10 center">
+		<div class="card-panel teal lighten-2 z-depth-2">
+			<span class="grey-text text-lighten-4">
+				<h6>
+					Consumo API con DataTables
+				</h6>
+			</span>
+		</div>
+	</div>
+	<div class="col s2 center">
+		<div class="card-panel teal lighten-2 z-depth-2">
+			<span class="grey-text text-lighten-4">
+					<a href="/index/" class="mdl-button mdl-button--raised mdl-button--colored">Inicio</a>
+			</span>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s12 center">
+		<div class="fw-container">
+			<div class="fw-body">
+				<div class="content">
+					<table id="tabla" class="mdl-data-table" style="width:60%">
+				        <thead>
+				            <tr>
+				                <th>ID</th>
+				                <th>Nombre</th>
+				                <th>Estatus</th>
+				                <th>Especies</th>
+				                <th>Tipo</th>
+				                <th>Genero</th>
+				                <th>Fecha</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				        	<?php 
+				        	// Recorremos los datos optenidos para cargarlos en el HTML
+				        	for ($i=0; $i < count($jsonObjet); $i++) { 
+					       	?>
+				            <tr>
+				                <td><?php echo $jsonObjet[$i]['id']; ?></td>
+				                <td><?php echo $jsonObjet[$i]['nombre']; ?></td>
+				                <td><?php echo $jsonObjet[$i]['status']; ?></td>
+				                <td><?php echo $jsonObjet[$i]['species']; ?></td>
+				                <td><?php echo $jsonObjet[$i]['type']; ?></td>
+				                <td><?php echo $jsonObjet[$i]['gender']; ?></td>
+				                <td><?php echo $jsonObjet[$i]['fecha']; ?></td>
+				            </tr>
+				        	<?php 
+				        	}
+				         	?>
+				        </tbody>
+				    </table>
+		   		</div>
+		   	</div>
+		</div>
+	</div>
+</div>
